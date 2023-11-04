@@ -1,0 +1,357 @@
+Microsoft Windows [Version 10.0.22621.2428]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Vijayan>mongosh
+Current Mongosh Log ID: 6531315b2be58998dd0c55fb
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.0.2
+Using MongoDB:          7.0.2
+Using Mongosh:          2.0.2
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-10-19T18:40:08.493+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> db
+test
+test> show dbs
+admin   40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+test> use kgm
+switched to db kgm
+kgm> db
+kgm
+kgm> db.createCollection('student');
+{ ok: 1 }
+kgm> show collections
+student
+kgm> db.createCollection('profile',{capped:true,size:10000,max:10});
+{ ok: 1 }
+
+kgm> db.getCollectionInfos()
+[
+  {
+    name: 'profile',
+    type: 'collection',
+    options: { capped: true, size: 10000, max: 10 },
+    info: {
+      readOnly: false,
+      uuid: new UUID("5a2fe478-0450-451c-a39c-8d711553e776")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  },
+  {
+    name: 'student',
+    type: 'collection',
+    options: {},
+    info: {
+      readOnly: false,
+      uuid: new UUID("922c09c3-f1da-4009-ab63-6c0b81a2f75e")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  }
+]
+
+kgm> db.student.insertOne({id:3223,name:'vijayan',mark:90,deptno:67})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65313a1a2be58998dd0c55fc")
+}
+kgm> db.student.insertOne({id:3223,name:'vijayan',mark:90,deptno:67,address:{houseno:6,street:'vannaravayal',city:'pudukkottai'}})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65313ab72be58998dd0c55fd")
+}
+
+kgm> db.student.insertOne({id:3223,name:'vijayan',mark:90,deptno:67,address:[{houseno:6,street:'vannaravayal',city:'pudukkottai'}],role:'full stack'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653141442be58998dd0c55fe")
+}
+
+kgm> db.student.find()
+[
+  {
+    _id: ObjectId("65313a1a2be58998dd0c55fc"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67
+  },
+  {
+    _id: ObjectId("65313ab72be58998dd0c55fd"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    address: { houseno: 6, street: 'vannaravayal', city: 'pudukkottai' }
+  },
+  {
+    _id: ObjectId("653141442be58998dd0c55fe"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    address: [ { houseno: 6, street: 'vannaravayal', city: 'pudukkottai' } ],
+    role: 'full stack'
+  }
+]
+
+kgm>  db.student.insertOne({_id:1,id:3223,name:'vijayan',mark:90,deptno:67})
+
+{ acknowledged: true, insertedId: 1 }
+kgm> db.student.find()
+[
+  {
+    _id: ObjectId("65313a1a2be58998dd0c55fc"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67
+  },
+  {
+    _id: ObjectId("65313ab72be58998dd0c55fd"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    address: { houseno: 6, street: 'vannaravayal', city: 'pudukkottai' }
+  },
+  {
+    _id: ObjectId("653141442be58998dd0c55fe"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    address: [ { houseno: 6, street: 'vannaravayal', city: 'pudukkottai' } ],
+    role: 'full stack'
+  },
+  { _id: 1, id: 3223, name: 'vijayan', mark: 90, deptno: 67 }
+]
+
+kgm> db.student.find().pretty()
+[
+  {
+    _id: ObjectId("65313a1a2be58998dd0c55fc"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67
+  },
+  {
+    _id: ObjectId("65313ab72be58998dd0c55fd"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    address: { houseno: 6, street: 'vannaravayal', city: 'pudukkottai' }
+  },
+  {
+    _id: ObjectId("653141442be58998dd0c55fe"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    address: [ { houseno: 6, street: 'vannaravayal', city: 'pudukkottai' } ],
+    role: 'full stack'
+  },
+  { _id: 1, id: 3223, name: 'vijayan', mark: 90, deptno: 67 }
+]
+
+kgm> db.student.updateMany({},{$set:{result:null}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 4,
+  modifiedCount: 4,
+  upsertedCount: 0
+}
+kgm> db.student.find().pretty()
+[
+  {
+    _id: ObjectId("65313a1a2be58998dd0c55fc"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    result: null
+  },
+  {
+    _id: ObjectId("65313ab72be58998dd0c55fd"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    address: { houseno: 6, street: 'vannaravayal', city: 'pudukkottai' },
+    result: null
+  },
+  {
+    _id: ObjectId("653141442be58998dd0c55fe"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    address: [ { houseno: 6, street: 'vannaravayal', city: 'pudukkottai' } ],
+    role: 'full stack',
+    result: null
+  },
+  {
+    _id: 1,
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    result: null
+  }
+]
+
+kgm> db.student.updateMany({name:'vijayan'},{$set:{dob:'2003-02-06'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 4,
+  modifiedCount: 4,
+  upsertedCount: 0
+}
+kgm> db.student.find().pretty()
+[
+  {
+    _id: ObjectId("65313a1a2be58998dd0c55fc"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    result: null,
+    dob: '2003-02-06'
+  },
+  {
+    _id: ObjectId("65313ab72be58998dd0c55fd"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    address: { houseno: 6, street: 'vannaravayal', city: 'pudukkottai' },
+    result: null,
+    dob: '2003-02-06'
+  },
+  {
+    _id: ObjectId("653141442be58998dd0c55fe"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    address: [ { houseno: 6, street: 'vannaravayal', city: 'pudukkottai' } ],
+    role: 'full stack',
+    result: null,
+    dob: '2003-02-06'
+  },
+  {
+    _id: 1,
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    result: null,
+    dob: '2003-02-06'
+  }
+]
+
+kgm> db.student.updateMany({},{$unset:{result:1}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 4,
+  modifiedCount: 4,
+  upsertedCount: 0
+}
+kgm> db.student.find().pretty()
+[
+  {
+    _id: ObjectId("65313a1a2be58998dd0c55fc"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    dob: '2003-02-06'
+  },
+  {
+    _id: ObjectId("65313ab72be58998dd0c55fd"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    address: { houseno: 6, street: 'vannaravayal', city: 'pudukkottai' },
+    dob: '2003-02-06'
+  },
+  {
+    _id: ObjectId("653141442be58998dd0c55fe"),
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    address: [ { houseno: 6, street: 'vannaravayal', city: 'pudukkottai' } ],
+    role: 'full stack',
+    dob: '2003-02-06'
+  },
+  {
+    _id: 1,
+    id: 3223,
+    name: 'vijayan',
+    mark: 90,
+    deptno: 67,
+    dob: '2003-02-06'
+  }
+]
+
+kgm> db.student.updateMany({},{$rename:{name:'vijayan vvl'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 4,
+  modifiedCount: 4,
+  upsertedCount: 0
+}
+kgm> db.student.find().pretty()
+[
+  {
+    _id: ObjectId("65313a1a2be58998dd0c55fc"),
+    id: 3223,
+    mark: 90,
+    deptno: 67,
+    dob: '2003-02-06',
+    'vijayan vvl': 'vijayan'
+  },
+  {
+    _id: ObjectId("65313ab72be58998dd0c55fd"),
+    id: 3223,
+    mark: 90,
+    deptno: 67,
+    address: { houseno: 6, street: 'vannaravayal', city: 'pudukkottai' },
+    dob: '2003-02-06',
+    'vijayan vvl': 'vijayan'
+  },
+  {
+    _id: ObjectId("653141442be58998dd0c55fe"),
+    id: 3223,
+    mark: 90,
+    deptno: 67,
+    address: [ { houseno: 6, street: 'vannaravayal', city: 'pudukkottai' } ],
+    role: 'full stack',
+    dob: '2003-02-06',
+    'vijayan vvl': 'vijayan'
+  },
+  {
+    _id: 1,
+    id: 3223,
+    mark: 90,
+    deptno: 67,
+    dob: '2003-02-06',
+    'vijayan vvl': 'vijayan'
+  }
+]
+
+kgm> db.student.drop()
+true
