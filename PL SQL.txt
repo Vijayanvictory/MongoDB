@@ -1,0 +1,37 @@
+mysql> delimiter //
+mysql> create procedure greet()
+    -> begin
+    -> select "welcome";
+    -> end //
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> call greet()//
++---------+
+| welcome |
++---------+
+| welcome |
++---------+
+1 row in set (0.02 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+
+mysql> delimiter //
+mysql> create procedure hello()
+    -> begin
+    -> declare username varchar(20);
+    -> set username='vijayan';
+    -> select concat('welcome',username);
+    -> end //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call hello()//
++----------------------------+
+| concat('welcome',username) |
++----------------------------+
+| welcomevijayan             |
++----------------------------+
+1 row in set (0.00 sec)
+
+
+

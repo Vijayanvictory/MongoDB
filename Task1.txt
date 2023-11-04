@@ -1,0 +1,306 @@
+kgm> db.createCollection('student')
+{ ok: 1 }
+kgm> db.student.insertOne({Name:'vijayan',Age:20,Score:95.5})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653913b13b406bdffa85754f")
+}
+kgm> db.student.insertOne({Name:'emma',Age:30,Score:94.5})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653913dc3b406bdffa857550")
+}
+kgm> db.student.insertOne({Name:'Atis',Age:25,Score:94.4})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653913f63b406bdffa857551")
+}
+kgm> db.student.insertOne({Name:'Anna',Age:27,Score:94.3})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6539140a3b406bdffa857552")
+}
+kgm> db.student.insertOne({Name:'Alise',Age:26,Score:94.2})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653914373b406bdffa857553")
+}
+kgm> db.student.insertOne({Name:'nova',Age:26,Score:93.6})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653914493b406bdffa857554")
+}
+
+
+
+kgm> db.createCollection('customer')
+{ ok: 1 }
+
+kgm> db.customer.insertOne({customerid:12021,first_name:'arun',last_name:'kumar',dob:'09-04-1996',address:{city:'london',country:'uk',street:'efil street'},phone_number:90981398})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653916eb3b406bdffa857555")
+}
+kgm> db.customer.insertOne({customerid:12022,first_name:'edward',last_name:'king',dob:'03-03-1999',address:{country:'us',city:'miami',street:'cristien way'},phone_number:038949834})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653917123b406bdffa857556")
+}
+kgm> db.customer.insertOne({customerid:12023,first_name:'jacob',last_name:'winson',dob:'12-04-2003',address:{country:'us',city:'florida',street:'evin mahl'},phone_number:0398675})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6539173c3b406bdffa857557")
+}
+kgm> db.customer.insertOne({customerid:12024,first_name:'mark',last_name:'antony',dob:'16-05-2004',address:{country:'australia',city:'desert cone',street:'ychimahan'},phone_number:07897652})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6539175c3b406bdffa857558")
+}
+kgm> db.customer.insertOne({customerid:12025,first_name:'justin',last_name:'biber',dob:'22-05-2008',address:{country:'japan',city:'moonauh',street:'mountain flag'},phone_number:550987343})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653917853b406bdffa857559")
+}
+kgm> db.customer.insertOne({customerid:12026,first_name:'aisha',last_name:'nihoon',dob:'20-02-2010',address:{country:'korea',city:'uhan',street:'uho maal'},phone_number:8787656467})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653917ac3b406bdffa85755a")
+}
+
+
+
+kgm> db.createCollection('order_det')
+{ ok: 1 }
+
+kgm> db.order_det.insertOne({orderid:1201,customerid:12021,order_datetime:'12-09-2002,10:09:54.PM',shipped_datetime:'20-09-2002,03:06:43 PM',total_amount:789})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653918d13b406bdffa85755b")
+}
+kgm> db.order_det.insertOne({orderid:1202,customerid:12022,order_datetime:'14-07-2005,10:00:54.AM',shipped_datetime:'20-07-2005,06:06:43 PM',total_amount:800})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653918ed3b406bdffa85755c")
+}
+kgm> db.order_det.insertOne({orderid:1203,customerid:12023,order_datetime:'17-04-2008,11:34:54.PM',shipped_datetime:'20-04-2008,08:10:23 PM',total_amount:969})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653919063b406bdffa85755d")
+}
+kgm> db.order_det.insertOne({orderid:1204,customerid:12024,order_datetime:'02-08-2010,01:19:04.AM',shipped_datetime:'08-08-2010,01:06:43 PM',total_amount:1289})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6539191f3b406bdffa85755e")
+}
+kgm> db.order_det.insertOne({orderid:1205,customerid:12025,order_datetime:'12-06-2012,10:20:30.PM',shipped_datetime:'18-06-2012,09:34:13 PM',total_amount:1309})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653919313b406bdffa85755f")
+}
+kgm> db.order_det.insertOne({orderid:1206,customerid:12026,order_datetime:'11-09-2014,05:03:08.PM',shipped_datetime:'17-09-2014,03:06:43 PM',total_amount:1789})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653919453b406bdffa857560")
+}
+
+
+kgm> db.student.find().pretty()
+[
+  {
+    _id: ObjectId("653913b13b406bdffa85754f"),
+    Name: 'vijayan',
+    Age: 20,
+    Score: 95.5
+  },
+  {
+    _id: ObjectId("653913dc3b406bdffa857550"),
+    Name: 'emma',
+    Age: 30,
+    Score: 94.5
+  },
+  {
+    _id: ObjectId("653913f63b406bdffa857551"),
+    Name: 'Atis',
+    Age: 25,
+    Score: 94.4
+  },
+  {
+    _id: ObjectId("6539140a3b406bdffa857552"),
+    Name: 'Anna',
+    Age: 27,
+    Score: 94.3
+  },
+  {
+    _id: ObjectId("653914373b406bdffa857553"),
+    Name: 'Alise',
+    Age: 26,
+    Score: 94.2
+  },
+  {
+    _id: ObjectId("653914493b406bdffa857554"),
+    Name: 'nova',
+    Age: 26,
+    Score: 93.6
+  }
+]
+
+
+
+kgm> db.customer.find().pretty()
+[
+  {
+    _id: ObjectId("653916eb3b406bdffa857555"),
+    customerid: 12021,
+    first_name: 'arun',
+    last_name: 'kumar',
+    dob: '09-04-1996',
+    address: { city: 'london', country: 'uk', street: 'efil street' },
+    phone_number: 90981398
+  },
+  {
+    _id: ObjectId("653917123b406bdffa857556"),
+    customerid: 12022,
+    first_name: 'edward',
+    last_name: 'king',
+    dob: '03-03-1999',
+    address: { country: 'us', city: 'miami', street: 'cristien way' },
+    phone_number: 38949834
+  },
+  {
+    _id: ObjectId("6539173c3b406bdffa857557"),
+    customerid: 12023,
+    first_name: 'jacob',
+    last_name: 'winson',
+    dob: '12-04-2003',
+    address: { country: 'us', city: 'florida', street: 'evin mahl' },
+    phone_number: 398675
+  },
+  {
+    _id: ObjectId("6539175c3b406bdffa857558"),
+    customerid: 12024,
+    first_name: 'mark',
+    last_name: 'antony',
+    dob: '16-05-2004',
+    address: { country: 'australia', city: 'desert cone', street: 'ychimahan' },
+    phone_number: 7897652
+  },
+  {
+    _id: ObjectId("653917853b406bdffa857559"),
+    customerid: 12025,
+    first_name: 'justin',
+    last_name: 'biber',
+    dob: '22-05-2008',
+    address: { country: 'japan', city: 'moonauh', street: 'mountain flag' },
+    phone_number: 550987343
+  },
+  {
+    _id: ObjectId("653917ac3b406bdffa85755a"),
+    customerid: 12026,
+    first_name: 'aisha',
+    last_name: 'nihoon',
+    dob: '20-02-2010',
+    address: { country: 'korea', city: 'uhan', street: 'uho maal' },
+    phone_number: 8787656467
+  }
+]
+
+
+
+kgm> db.order_det.find().pretty()
+[
+  {
+    _id: ObjectId("653918d13b406bdffa85755b"),
+    orderid: 1201,
+    customerid: 12021,
+    order_datetime: '12-09-2002,10:09:54.PM',
+    shipped_datetime: '20-09-2002,03:06:43 PM',
+    total_amount: 789
+  },
+  {
+    _id: ObjectId("653918ed3b406bdffa85755c"),
+    orderid: 1202,
+    customerid: 12022,
+    order_datetime: '14-07-2005,10:00:54.AM',
+    shipped_datetime: '20-07-2005,06:06:43 PM',
+    total_amount: 800
+  },
+  {
+    _id: ObjectId("653919063b406bdffa85755d"),
+    orderid: 1203,
+    customerid: 12023,
+    order_datetime: '17-04-2008,11:34:54.PM',
+    shipped_datetime: '20-04-2008,08:10:23 PM',
+    total_amount: 969
+  },
+  {
+    _id: ObjectId("6539191f3b406bdffa85755e"),
+    orderid: 1204,
+    customerid: 12024,
+    order_datetime: '02-08-2010,01:19:04.AM',
+    shipped_datetime: '08-08-2010,01:06:43 PM',
+    total_amount: 1289
+  },
+  {
+    _id: ObjectId("653919313b406bdffa85755f"),
+    orderid: 1205,
+    customerid: 12025,
+    order_datetime: '12-06-2012,10:20:30.PM',
+    shipped_datetime: '18-06-2012,09:34:13 PM',
+    total_amount: 1309
+  },
+  {
+    _id: ObjectId("653919453b406bdffa857560"),
+    orderid: 1206,
+    customerid: 12026,
+    order_datetime: '11-09-2014,05:03:08.PM',
+    shipped_datetime: '17-09-2014,03:06:43 PM',
+    total_amount: 1789
+  }
+]
+
+
+kgm> use employee
+switched to db employee
+
+employee> db.createCollection('emp_det')
+{ ok: 1 }
+
+employee> db.emp_det.insertOne({name:'amir',age:23,job:'developer',experience:'2y',salary:120000,location:'australia'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65391bb13b406bdffa857561")
+}
+employee> db.emp_det.insertOne({name:'edward',age:27,job:'Trainer',experience:'4y',salary:150000,location:'canada'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65391be83b406bdffa857562")
+}
+employee> db.emp_det.insertOne({name:'jacob',age:25,job:'Analyst',experience:'3y',salary:160000,location:'usa'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65391c253b406bdffa857563")
+}
+employee> db.emp_det.insertOne({name:'Mardin',age:30,job:'Data scientist',experience:'4y',salary:220000,location:'Austria'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65391c7c3b406bdffa857564")
+}
+employee> db.emp_det.insertOne({name:'Isak',age:29,job:'HR',experience:'10y',salary:200000,location:'Russia'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65391cca3b406bdffa857565")
+}
+
+employee> db.emp_det.drop()
+true
+employee> db.dropDatabase()
+{ ok: 1, dropped: 'employee' }
+employee> show collections
+
+employee> show dbs
+admin     40.00 KiB
+config   108.00 KiB
+kgm      264.00 KiB
+local     40.00 KiB
+mystore   80.00 KiB
+employee>

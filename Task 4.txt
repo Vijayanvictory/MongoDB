@@ -1,0 +1,184 @@
+kgm> db.createCollection('product_details')
+{ ok: 1 }
+
+kgm> db.product_details.insertMany([{ product_id: 1, product_name: "iphone 11", price: 50.99, quantity: 100, company: { name: "Apple", purchasedate: "2023-01-15" } } ,{ product_id: 2, product_name: "iphone 11", price: 49.99, quantity: 80, company: { name: "Apple", purchasedate: "2023-04-05" } }, { product_id: 3, product_name: "Samsung s23", price: 76.49, quantity: 45, company: { name: "Samsung", purchasedate: "2023-05-15" } }, { product_id: 4, product_name: "Poco x3", price: 32.25, quantity: 60, company: { name: "Xiami", purchasedate: "2023-06-20" } }, { product_id: 5, product_name: "iphone 11", price: 48.99, quantity: 70, company: { name: "Apple", purchasedate: "2023-07-10" } }, { product_id: 6, product_name: "Samsung s23", price: 77.49, quantity: 55, company: { name: "Samsung", purchasedate: "2023-08-25" } }, { product_id: 7, product_name: "Poco x3", price: 34.25, quantity: 65, company: { name: "Xiami", purchasedate: "2023-09-05" } }, { product_id: 8, product_name: "iphone 11", price: 47.99, quantity: 90, company: { name: "Apple", purchasedate: "2023-10-10" } }, { product_id: 9, product_name: "Samsung s23", price: 78.49, quantity: 40, company: { name: "Samsung", purchasedate: "2023-11-15" } }, { product_id: 10, product_name: "Poco x3", price: 36.25, quantity: 85, company: { name: "Xiami", purchasedate: "2023-12-20" } },{ product_id: 11, product_name: "Samsung s23", price: 76.49, quantity: 45, company: { name: "Samsung", purchasedate: "2023-02-20" } }, { product_id: 12, product_name: "Poco x3", price: 32.25, quantity: 60, company: { name: "Xiami", purchasedate: "2023-03-10" } }])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("653e23c81774d86844521cae"),
+    '1': ObjectId("653e23c81774d86844521caf"),
+    '2': ObjectId("653e23c81774d86844521cb0"),
+    '3': ObjectId("653e23c81774d86844521cb1"),
+    '4': ObjectId("653e23c81774d86844521cb2"),
+    '5': ObjectId("653e23c81774d86844521cb3"),
+    '6': ObjectId("653e23c81774d86844521cb4"),
+    '7': ObjectId("653e23c81774d86844521cb5"),
+    '8': ObjectId("653e23c81774d86844521cb6"),
+    '9': ObjectId("653e23c81774d86844521cb7"),
+    '10': ObjectId("653e23c81774d86844521cb8"),
+    '11': ObjectId("653e23c81774d86844521cb9")
+  }
+}
+
+kgm> db.product_details.find({product_name:"iphone 11"})
+[
+  {
+    _id: ObjectId("653e23c81774d86844521cae"),
+    product_id: 1,
+    product_name: 'iphone 11',
+    price: 50.99,
+    quantity: 100,
+    company: { name: 'Apple', purchasedate: '2023-01-15' }
+  },
+  {
+    _id: ObjectId("653e23c81774d86844521caf"),
+    product_id: 2,
+    product_name: 'iphone 11',
+    price: 49.99,
+    quantity: 80,
+    company: { name: 'Apple', purchasedate: '2023-04-05' }
+  },
+  {
+    _id: ObjectId("653e23c81774d86844521cb2"),
+    product_id: 5,
+    product_name: 'iphone 11',
+    price: 48.99,
+    quantity: 70,
+    company: { name: 'Apple', purchasedate: '2023-07-10' }
+  },
+  {
+    _id: ObjectId("653e23c81774d86844521cb5"),
+    product_id: 8,
+    product_name: 'iphone 11',
+    price: 47.99,
+    quantity: 90,
+    company: { name: 'Apple', purchasedate: '2023-10-10' }
+  }
+]
+
+
+kgm> db.product_details.find({'company.name':"Apple"})
+[
+  {
+    _id: ObjectId("653e23c81774d86844521cae"),
+    product_id: 1,
+    product_name: 'iphone 11',
+    price: 50.99,
+    quantity: 100,
+    company: { name: 'Apple', purchasedate: '2023-01-15' }
+  },
+  {
+    _id: ObjectId("653e23c81774d86844521caf"),
+    product_id: 2,
+    product_name: 'iphone 11',
+    price: 49.99,
+    quantity: 80,
+    company: { name: 'Apple', purchasedate: '2023-04-05' }
+  },
+  {
+    _id: ObjectId("653e23c81774d86844521cb2"),
+    product_id: 5,
+    product_name: 'iphone 11',
+    price: 48.99,
+    quantity: 70,
+    company: { name: 'Apple', purchasedate: '2023-07-10' }
+  },
+  {
+    _id: ObjectId("653e23c81774d86844521cb5"),
+    product_id: 8,
+    product_name: 'iphone 11',
+    price: 47.99,
+    quantity: 90,
+    company: { name: 'Apple', purchasedate: '2023-10-10' }
+  }
+]
+
+
+kgm> db.product_details.find({'company.name':"Samsung"})
+[
+  {
+    _id: ObjectId("653e23c81774d86844521cb0"),
+    product_id: 3,
+    product_name: 'Samsung s23',
+    price: 76.49,
+    quantity: 45,
+    company: { name: 'Samsung', purchasedate: '2023-05-15' }
+  },
+  {
+    _id: ObjectId("653e23c81774d86844521cb3"),
+    product_id: 6,
+    product_name: 'Samsung s23',
+    price: 77.49,
+    quantity: 55,
+    company: { name: 'Samsung', purchasedate: '2023-08-25' }
+  },
+  {
+    _id: ObjectId("653e23c81774d86844521cb6"),
+    product_id: 9,
+    product_name: 'Samsung s23',
+    price: 78.49,
+    quantity: 40,
+    company: { name: 'Samsung', purchasedate: '2023-11-15' }
+  },
+  {
+    _id: ObjectId("653e23c81774d86844521cb8"),
+    product_id: 11,
+    product_name: 'Samsung s23',
+    price: 76.49,
+    quantity: 45,
+    company: { name: 'Samsung', purchasedate: '2023-02-20' }
+  }
+]
+kgm> db.product_details.find({'company.name':"Xiami"})
+[
+  {
+    _id: ObjectId("653e23c81774d86844521cb1"),
+    product_id: 4,
+    product_name: 'Poco x3',
+    price: 32.25,
+    quantity: 60,
+    company: { name: 'Xiami', purchasedate: '2023-06-20' }
+  },
+  {
+    _id: ObjectId("653e23c81774d86844521cb4"),
+    product_id: 7,
+    product_name: 'Poco x3',
+    price: 34.25,
+    quantity: 65,
+    company: { name: 'Xiami', purchasedate: '2023-09-05' }
+  },
+  {
+    _id: ObjectId("653e23c81774d86844521cb7"),
+    product_id: 10,
+    product_name: 'Poco x3',
+    price: 36.25,
+    quantity: 85,
+    company: { name: 'Xiami', purchasedate: '2023-12-20' }
+  },
+  {
+    _id: ObjectId("653e23c81774d86844521cb9"),
+    product_id: 12,
+    product_name: 'Poco x3',
+    price: 32.25,
+    quantity: 60,
+    company: { name: 'Xiami', purchasedate: '2023-03-10' }
+  }
+]
+
+
+kgm> db.product_details.aggregate([{$group:{_id:'$product_name','total amount':{$sum:'$price'}}}])
+[
+  { _id: 'iphone 11', 'total amount': 197.96 },
+  { _id: 'Samsung s23', 'total amount': 308.96 },
+  { _id: 'Poco x3', 'total amount': 135 }
+]
+
+
+kgm> db.product_details.aggregate([{$group:{_id:'$product_name','total amount':{$sum:'$price'},'average price':{$avg:'$price'}}}])
+[
+  { _id: 'iphone 11', 'total amount': 197.96, 'average price': 49.49 },
+  { _id: 'Samsung s23', 'total amount': 308.96, 'average price': 77.24},
+  { _id: 'Poco x3', 'total amount': 135, 'average price': 33.75 }
+]
+
+

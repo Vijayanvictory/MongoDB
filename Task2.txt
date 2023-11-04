@@ -1,0 +1,999 @@
+kgm> db.createCollection('student')
+{ ok: 1 }
+
+kgm> db.student.insertMany([{name:'vijayan',course:'full stack',m1:90,m2:98,m3:89,subject:['html','css','mongodb'],personl:{age:20,dob:'06-02-2003',father_name:'palanisamy',mobile_number:6787674345,email_id:'p.vijan06@gmail.com'},address:{street:'Melathaniya',city:'pudukkottai',sate:'tamilnadu',country:'india'}},{name:'Ajith',course:'full stack',m1:90,m2:98,m3:89,subject:['html','css','mongodb'],personl:{age:22,dob:'06-12-2001',father_name:'kanthasamy',mobile_number:9787674345,email_id:'ajith123@gmail.com'},address:{street:'selam',city:'selam',sate:'tamilnadu',country:'india'}},{name:'sathish',course:'developer',m1:60,m2:50,m3:85,subject:['html','css','mongodb'],personl:{age:23,dob:'06-06-2003',father_name:'palanisamy',mobile_number:6787453345,email_id:'sathish@gmail.com'},address:{street:'Melathaniya',city:'pudukkottai',sate:'tamilnadu',country:'india'}},{name:'edward',course:'B.E CSE.',m1:90,m2:65,m3:89,subject:['html','css','mongodb'],personl:{age:24,dob:'06-06-2003',father_name:'jacob',mobile_number:6786574345,email_id:'edward@gmail.com'},address:{street:'lumina',city:'miami',sate:'miami',country:'america'}},{name:'jacob',course:'BCA',m1:90,m2:98,m3:89,subject:['html','css','mongodb'],personl:{age:22,dob:'08-08-2001',father_name:'edwin',mobile_number:6787674345,email_id:'jacob06@gmail.com'},address:{street:'calin',city:'california',sate:'california',country:'america'}},{name:'ansari',course:'BCA',m1:90,m2:98,m3:89,subject:['html','css','mongodb'],personl:{age:21,dob:'05-09-2003',father_name:'mohmedali',mobile_number:6784674645,email_id:'ansari@gmail.com'},address:{street:'Melathaniya',city:'pudukkottai',sate:'tamilnadu',country:'india'}},{name:'kevin',course:'B.E CSE.',m1:90,m2:67,m3:89,subject:['html','css','mongodb'],personl:{age:21,dob:'09-12-2001',father_name:'samy',mobile_number:9787604345,email_id:'kevin123@gmail.com'},address:{street:'coimbatore',city:'coimbatore',sate:'tamilnadu',country:'india'}},{name:'sathishkumar',course:'developer',m1:60,m2:50,m3:85,subject:['html','css','mongodb'],personl:{age:23,dob:'06-06-2003',father_name:'palanisamy',mobile_number:6707453345,email_id:'sathish@gmail.com'},address:{street:'Melathaniya',city:'pudukkottai',sate:'tamilnadu',country:'india'}},{name:'sachin',course:'B.E CSE.',m1:90,m2:65,m3:89,subject:['html','css','mongodb'],personl:{age:24,dob:'06-06-2003',father_name:'jan',mobile_number:6786594345,email_id:'sachin@gmail.com'},address:{street:'lumina',city:'miami',sate:'miami',country:'america'}},{name:'sachin',course:'BCA',m1:90,m2:98,m3:89,subject:['html','css','mongodb'],personl:{age:22,dob:'08-08-2001',father_name:'wilson',mobile_number:6787674345,email_id:'jac06@gmail.com'},address:{street:'calin',city:'california',sate:'california',country:'america'}}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("653de9961774d86844521ca4"),
+    '1': ObjectId("653de9961774d86844521ca5"),
+    '2': ObjectId("653de9961774d86844521ca6"),
+    '3': ObjectId("653de9961774d86844521ca7"),
+    '4': ObjectId("653de9961774d86844521ca8"),
+    '5': ObjectId("653de9961774d86844521ca9"),
+    '6': ObjectId("653de9961774d86844521caa"),
+    '7': ObjectId("653de9961774d86844521cab"),
+    '8': ObjectId("653de9961774d86844521cac"),
+    '9': ObjectId("653de9961774d86844521cad")
+  }
+}					(or)
+
+kgm>  db.student.insertOne({name:'vijayan',course:'full stack',m1:90,m2:98,m3:89,subject:['html','css','mongodb'],personl:{age:20,dob:'06-02-2003',father_name:'palanisamy',mobile_number:6787674345,email_id:'p.vijan06@gmail.com'},address:{street:'Melathaniya',city:'pudukkottai',sate:'tamilnadu',country:'india'}})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653a7e01873d294d19a1e4d5")
+}
+kgm> db.student.insertOne({name:'Ajith',course:'full stack',m1:90,m2:98,m3:89,subject:['html','css','mongodb'],personl:{age:22,dob:'06-12-2001',father_name:'kanthasamy',mobile_number:9787674345,email_id:'ajith123@gmail.com'},address:{street:'selam',city:'selam',sate:'tamilnadu',country:'india'}})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653a7e69873d294d19a1e4d6")
+}
+kgm> db.student.insertOne({name:'sathish',course:'developer',m1:60,m2:50,m3:85,subject:['html','css','mongodb'],personl:{age:23,dob:'06-06-2003',father_name:'palanisamy',mobile_number:6787453345,email_id:'sathish@gmail.com'},address:{street:'Melathaniya',city:'pudukkottai',sate:'tamilnadu',country:'india'}})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653a7eac873d294d19a1e4d7")
+}
+kgm> db.student.insertOne({name:'edward',course:'B.E CSE.',m1:90,m2:65,m3:89,subject:['html','css','mongodb'],personl:{age:24,dob:'06-06-2003',father_name:'jacob',mobile_number:6786574345,email_id:'edward@gmail.com'},address:{street:'lumina',city:'miami',sate:'miami',country:'america'}})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653a7ede873d294d19a1e4d8")
+}
+kgm> db.student.insertOne({name:'jacob',course:'BCA',m1:90,m2:98,m3:89,subject:['html','css','mongodb'],personl:{age:22,dob:'08-08-2001',father_name:'edwin',mobile_number:6787674345,email_id:'jacob06@gmail.com'},address:{street:'calin',city:'california',sate:'california',country:'america'}})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653a7f2f873d294d19a1e4d9")
+}
+kgm> db.student.insertOne({name:'ansari',course:'BCA',m1:90,m2:98,m3:89,subject:['html','css','mongodb'],personl:{age:21,dob:'05-09-2003',father_name:'mohmedali',mobile_number:6784674645,email_id:'ansari@gmail.com'},address:{street:'Melathaniya',city:'pudukkottai',sate:'tamilnadu',country:'india'}})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653a7f5d873d294d19a1e4da")
+}
+kgm> db.student.insertOne({name:'kevin',course:'B.E CSE.',m1:90,m2:67,m3:89,subject:['html','css','mongodb'],personl:{age:21,dob:'09-12-2001',father_name:'samy',mobile_number:9787604345,email_id:'kevin123@gmail.com'},address:{street:'coimbatore',city:'coimbatore',sate:'tamilnadu',country:'india'}})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653a7f8b873d294d19a1e4db")
+}
+kgm> db.student.insertOne({name:'sathishkumar',course:'developer',m1:60,m2:50,m3:85,subject:['html','css','mongodb'],personl:{age:23,dob:'06-06-2003',father_name:'palanisamy',mobile_number:6707453345,email_id:'sathish@gmail.com'},address:{street:'Melathaniya',city:'pudukkottai',sate:'tamilnadu',country:'india'}})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653a7fbd873d294d19a1e4dc")
+}
+kgm> db.student.insertOne({name:'sachin',course:'B.E CSE.',m1:90,m2:65,m3:89,subject:['html','css','mongodb'],personl:{age:24,dob:'06-06-2003',father_name:'jan',mobile_number:6786594345,email_id:'sachin@gmail.com'},address:{street:'lumina',city:'miami',sate:'miami',country:'america'}})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653a7fe3873d294d19a1e4dd")
+}
+kgm> db.student.insertOne({name:'sachin',course:'BCA',m1:90,m2:98,m3:89,subject:['html','css','mongodb'],personl:{age:22,dob:'08-08-2001',father_name:'wilson',mobile_number:6787674345,email_id:'jac06@gmail.com'},address:{street:'calin',city:'california',sate:'california',country:'america'}})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653a800a873d294d19a1e4de")
+}
+kgm> db.student.find().pretty()
+[
+  {
+    _id: ObjectId("653a7e01873d294d19a1e4d5"),
+    name: 'vijayan',
+    course: 'full stack',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 20,
+      dob: '06-02-2003',
+      father_name: 'palanisamy',
+      mobile_number: 6787674345,
+      email_id: 'p.vijan06@gmail.com'
+    },
+    address: {
+      street: 'Melathaniya',
+      city: 'pudukkottai',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7e69873d294d19a1e4d6"),
+    name: 'Ajith',
+    course: 'full stack',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 22,
+      dob: '06-12-2001',
+      father_name: 'kanthasamy',
+      mobile_number: 9787674345,
+      email_id: 'ajith123@gmail.com'
+    },
+    address: {
+      street: 'selam',
+      city: 'selam',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7eac873d294d19a1e4d7"),
+    name: 'sathish',
+    course: 'developer',
+    m1: 60,
+    m2: 50,
+    m3: 85,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 23,
+      dob: '06-06-2003',
+      father_name: 'palanisamy',
+      mobile_number: 6787453345,
+      email_id: 'sathish@gmail.com'
+    },
+    address: {
+      street: 'Melathaniya',
+      city: 'pudukkottai',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7ede873d294d19a1e4d8"),
+    name: 'edward',
+    course: 'B.E CSE.',
+    m1: 90,
+    m2: 65,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 24,
+      dob: '06-06-2003',
+      father_name: 'jacob',
+      mobile_number: 6786574345,
+      email_id: 'edward@gmail.com'
+    },
+    address: {
+      street: 'lumina',
+      city: 'miami',
+      sate: 'miami',
+      country: 'america'
+    }
+  },
+  {
+    _id: ObjectId("653a7f2f873d294d19a1e4d9"),
+    name: 'jacob',
+    course: 'BCA',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 22,
+      dob: '08-08-2001',
+      father_name: 'edwin',
+      mobile_number: 6787674345,
+      email_id: 'jacob06@gmail.com'
+    },
+    address: {
+      street: 'calin',
+      city: 'california',
+      sate: 'california',
+      country: 'america'
+    }
+  },
+  {
+    _id: ObjectId("653a7f5d873d294d19a1e4da"),
+    name: 'ansari',
+    course: 'BCA',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 21,
+      dob: '05-09-2003',
+      father_name: 'mohmedali',
+      mobile_number: 6784674645,
+      email_id: 'ansari@gmail.com'
+    },
+    address: {
+      street: 'Melathaniya',
+      city: 'pudukkottai',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7f8b873d294d19a1e4db"),
+    name: 'kevin',
+    course: 'B.E CSE.',
+    m1: 90,
+    m2: 67,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 21,
+      dob: '09-12-2001',
+      father_name: 'samy',
+      mobile_number: 9787604345,
+      email_id: 'kevin123@gmail.com'
+    },
+    address: {
+      street: 'coimbatore',
+      city: 'coimbatore',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7fbd873d294d19a1e4dc"),
+    name: 'sathishkumar',
+    course: 'developer',
+    m1: 60,
+    m2: 50,
+    m3: 85,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 23,
+      dob: '06-06-2003',
+      father_name: 'palanisamy',
+      mobile_number: 6707453345,
+      email_id: 'sathish@gmail.com'
+    },
+    address: {
+      street: 'Melathaniya',
+      city: 'pudukkottai',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7fe3873d294d19a1e4dd"),
+    name: 'sachin',
+    course: 'B.E CSE.',
+    m1: 90,
+    m2: 65,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 24,
+      dob: '06-06-2003',
+      father_name: 'jan',
+      mobile_number: 6786594345,
+      email_id: 'sachin@gmail.com'
+    },
+    address: {
+      street: 'lumina',
+      city: 'miami',
+      sate: 'miami',
+      country: 'america'
+    }
+  },
+  {
+    _id: ObjectId("653a800a873d294d19a1e4de"),
+    name: 'sachin',
+    course: 'BCA',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 22,
+      dob: '08-08-2001',
+      father_name: 'wilson',
+      mobile_number: 6787674345,
+      email_id: 'jac06@gmail.com'
+    },
+    address: {
+      street: 'calin',
+      city: 'california',
+      sate: 'california',
+      country: 'america'
+    }
+  }
+]
+
+
+
+kgm>  db.student.find({},{_id:0,name:1,course:1,m1:1,m2:1,m3:1,subject:1,personl:1,address:1}).pretty().limit(1)
+[
+  {
+    name: 'vijayan',
+    course: 'full stack',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 20,
+      dob: '06-02-2003',
+      father_name: 'palanisamy',
+      mobile_number: 6787674345,
+      email_id: 'p.vijan06@gmail.com'
+    },
+    address: {
+      street: 'Melathaniya',
+      city: 'pudukkottai',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  }
+]
+
+
+
+kgm> db.student.find({course:'B.E CSE.'})
+[
+  {
+    _id: ObjectId("653a7ede873d294d19a1e4d8"),
+    name: 'edward',
+    course: 'B.E CSE.',
+    m1: 90,
+    m2: 65,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 24,
+      dob: '06-06-2003',
+      father_name: 'jacob',
+      mobile_number: 6786574345,
+      email_id: 'edward@gmail.com'
+    },
+    address: {
+      street: 'lumina',
+      city: 'miami',
+      sate: 'miami',
+      country: 'america'
+    }
+  },
+  {
+    _id: ObjectId("653a7f8b873d294d19a1e4db"),
+    name: 'kevin',
+    course: 'B.E CSE.',
+    m1: 90,
+    m2: 67,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 21,
+      dob: '09-12-2001',
+      father_name: 'samy',
+      mobile_number: 9787604345,
+      email_id: 'kevin123@gmail.com'
+    },
+    address: {
+      street: 'coimbatore',
+      city: 'coimbatore',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7fe3873d294d19a1e4dd"),
+    name: 'sachin',
+    course: 'B.E CSE.',
+    m1: 90,
+    m2: 65,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 24,
+      dob: '06-06-2003',
+      father_name: 'jan',
+      mobile_number: 6786594345,
+      email_id: 'sachin@gmail.com'
+    },
+    address: {
+      street: 'lumina',
+      city: 'miami',
+      sate: 'miami',
+      country: 'america'
+    }
+  }
+]
+
+
+kgm> db.student.find({},{_id:0,name:1})
+[
+  { name: 'vijayan' },
+  { name: 'Ajith' },
+  { name: 'sathish' },
+  { name: 'edward' },
+  { name: 'jacob' },
+  { name: 'ansari' },
+  { name: 'kevin' },
+  { name: 'sathishkumar' },
+  { name: 'sachin' },
+  { name: 'sachin' }
+]
+
+
+kgm> db.student.find({},{name:1,course:1,'personl.mobile_number':1})
+[
+  {
+    _id: ObjectId("653a7e01873d294d19a1e4d5"),
+    name: 'vijayan',
+    course: 'full stack',
+    personl: { mobile_number: 6787674345 }
+  },
+  {
+    _id: ObjectId("653a7e69873d294d19a1e4d6"),
+    name: 'Ajith',
+    course: 'full stack',
+    personl: { mobile_number: 9787674345 }
+  },
+  {
+    _id: ObjectId("653a7eac873d294d19a1e4d7"),
+    name: 'sathish',
+    course: 'developer',
+    personl: { mobile_number: 6787453345 }
+  },
+  {
+    _id: ObjectId("653a7ede873d294d19a1e4d8"),
+    name: 'edward',
+    course: 'B.E CSE.',
+    personl: { mobile_number: 6786574345 }
+  },
+  {
+    _id: ObjectId("653a7f2f873d294d19a1e4d9"),
+    name: 'jacob',
+    course: 'BCA',
+    personl: { mobile_number: 6787674345 }
+  },
+  {
+    _id: ObjectId("653a7f5d873d294d19a1e4da"),
+    name: 'ansari',
+    course: 'BCA',
+    personl: { mobile_number: 6784674645 }
+  },
+  {
+    _id: ObjectId("653a7f8b873d294d19a1e4db"),
+    name: 'kevin',
+    course: 'B.E CSE.',
+    personl: { mobile_number: 9787604345 }
+  },
+  {
+    _id: ObjectId("653a7fbd873d294d19a1e4dc"),
+    name: 'sathishkumar',
+    course: 'developer',
+    personl: { mobile_number: 6707453345 }
+  },
+  {
+    _id: ObjectId("653a7fe3873d294d19a1e4dd"),
+    name: 'sachin',
+    course: 'B.E CSE.',
+    personl: { mobile_number: 6786594345 }
+  },
+  {
+    _id: ObjectId("653a800a873d294d19a1e4de"),
+    name: 'sachin',
+    course: 'BCA',
+    personl: { mobile_number: 6787674345 }
+  }
+]
+
+
+
+kgm> db.student.find({m1:{$gt:70}})
+[
+  {
+    _id: ObjectId("653a7e01873d294d19a1e4d5"),
+    name: 'vijayan',
+    course: 'full stack',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 20,
+      dob: '06-02-2003',
+      father_name: 'palanisamy',
+      mobile_number: 6787674345,
+      email_id: 'p.vijan06@gmail.com'
+    },
+    address: {
+      street: 'Melathaniya',
+      city: 'pudukkottai',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7e69873d294d19a1e4d6"),
+    name: 'Ajith',
+    course: 'full stack',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 22,
+      dob: '06-12-2001',
+      father_name: 'kanthasamy',
+      mobile_number: 9787674345,
+      email_id: 'ajith123@gmail.com'
+    },
+    address: {
+      street: 'selam',
+      city: 'selam',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7ede873d294d19a1e4d8"),
+    name: 'edward',
+    course: 'B.E CSE.',
+    m1: 90,
+    m2: 65,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 24,
+      dob: '06-06-2003',
+      father_name: 'jacob',
+      mobile_number: 6786574345,
+      email_id: 'edward@gmail.com'
+    },
+    address: {
+      street: 'lumina',
+      city: 'miami',
+      sate: 'miami',
+      country: 'america'
+    }
+  },
+  {
+    _id: ObjectId("653a7f2f873d294d19a1e4d9"),
+    name: 'jacob',
+    course: 'BCA',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 22,
+      dob: '08-08-2001',
+      father_name: 'edwin',
+      mobile_number: 6787674345,
+      email_id: 'jacob06@gmail.com'
+    },
+    address: {
+      street: 'calin',
+      city: 'california',
+      sate: 'california',
+      country: 'america'
+    }
+  },
+  {
+    _id: ObjectId("653a7f5d873d294d19a1e4da"),
+    name: 'ansari',
+    course: 'BCA',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 21,
+      dob: '05-09-2003',
+      father_name: 'mohmedali',
+      mobile_number: 6784674645,
+      email_id: 'ansari@gmail.com'
+    },
+    address: {
+      street: 'Melathaniya',
+      city: 'pudukkottai',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7f8b873d294d19a1e4db"),
+    name: 'kevin',
+    course: 'B.E CSE.',
+    m1: 90,
+    m2: 67,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 21,
+      dob: '09-12-2001',
+      father_name: 'samy',
+      mobile_number: 9787604345,
+      email_id: 'kevin123@gmail.com'
+    },
+    address: {
+      street: 'coimbatore',
+      city: 'coimbatore',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7fe3873d294d19a1e4dd"),
+    name: 'sachin',
+    course: 'B.E CSE.',
+    m1: 90,
+    m2: 65,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 24,
+      dob: '06-06-2003',
+      father_name: 'jan',
+      mobile_number: 6786594345,
+      email_id: 'sachin@gmail.com'
+    },
+    address: {
+      street: 'lumina',
+      city: 'miami',
+      sate: 'miami',
+      country: 'america'
+    }
+  },
+  {
+    _id: ObjectId("653a800a873d294d19a1e4de"),
+    name: 'sachin',
+    course: 'BCA',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 22,
+      dob: '08-08-2001',
+      father_name: 'wilson',
+      mobile_number: 6787674345,
+      email_id: 'jac06@gmail.com'
+    },
+    address: {
+      street: 'calin',
+      city: 'california',
+      sate: 'california',
+      country: 'america'
+    }
+  }
+]
+
+
+kgm> db.student.find({m2:{$lt:70}})
+[
+  {
+    _id: ObjectId("653a7eac873d294d19a1e4d7"),
+    name: 'sathish',
+    course: 'developer',
+    m1: 60,
+    m2: 50,
+    m3: 85,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 23,
+      dob: '06-06-2003',
+      father_name: 'palanisamy',
+      mobile_number: 6787453345,
+      email_id: 'sathish@gmail.com'
+    },
+    address: {
+      street: 'Melathaniya',
+      city: 'pudukkottai',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7ede873d294d19a1e4d8"),
+    name: 'edward',
+    course: 'B.E CSE.',
+    m1: 90,
+    m2: 65,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 24,
+      dob: '06-06-2003',
+      father_name: 'jacob',
+      mobile_number: 6786574345,
+      email_id: 'edward@gmail.com'
+    },
+    address: {
+      street: 'lumina',
+      city: 'miami',
+      sate: 'miami',
+      country: 'america'
+    }
+  },
+  {
+    _id: ObjectId("653a7f8b873d294d19a1e4db"),
+    name: 'kevin',
+    course: 'B.E CSE.',
+    m1: 90,
+    m2: 67,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 21,
+      dob: '09-12-2001',
+      father_name: 'samy',
+      mobile_number: 9787604345,
+      email_id: 'kevin123@gmail.com'
+    },
+    address: {
+      street: 'coimbatore',
+      city: 'coimbatore',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7fbd873d294d19a1e4dc"),
+    name: 'sathishkumar',
+    course: 'developer',
+    m1: 60,
+    m2: 50,
+    m3: 85,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 23,
+      dob: '06-06-2003',
+      father_name: 'palanisamy',
+      mobile_number: 6707453345,
+      email_id: 'sathish@gmail.com'
+    },
+    address: {
+      street: 'Melathaniya',
+      city: 'pudukkottai',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7fe3873d294d19a1e4dd"),
+    name: 'sachin',
+    course: 'B.E CSE.',
+    m1: 90,
+    m2: 65,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 24,
+      dob: '06-06-2003',
+      father_name: 'jan',
+      mobile_number: 6786594345,
+      email_id: 'sachin@gmail.com'
+    },
+    address: {
+      street: 'lumina',
+      city: 'miami',
+      sate: 'miami',
+      country: 'america'
+    }
+  }
+]
+
+
+kgm> db.student.find({name:{$eq:'sachin'}})
+[
+  {
+    _id: ObjectId("653a7fe3873d294d19a1e4dd"),
+    name: 'sachin',
+    course: 'B.E CSE.',
+    m1: 90,
+    m2: 65,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 24,
+      dob: '06-06-2003',
+      father_name: 'jan',
+      mobile_number: 6786594345,
+      email_id: 'sachin@gmail.com'
+    },
+    address: {
+      street: 'lumina',
+      city: 'miami',
+      sate: 'miami',
+      country: 'america'
+    }
+  },
+  {
+    _id: ObjectId("653a800a873d294d19a1e4de"),
+    name: 'sachin',
+    course: 'BCA',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 22,
+      dob: '08-08-2001',
+      father_name: 'wilson',
+      mobile_number: 6787674345,
+      email_id: 'jac06@gmail.com'
+    },
+    address: {
+      street: 'calin',
+      city: 'california',
+      sate: 'california',
+      country: 'america'
+    }
+  }
+]
+
+
+kgm> db.student.find({name:{$ne:'sachin'}})
+[
+  {
+    _id: ObjectId("653a7e01873d294d19a1e4d5"),
+    name: 'vijayan',
+    course: 'full stack',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 20,
+      dob: '06-02-2003',
+      father_name: 'palanisamy',
+      mobile_number: 6787674345,
+      email_id: 'p.vijan06@gmail.com'
+    },
+    address: {
+      street: 'Melathaniya',
+      city: 'pudukkottai',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7e69873d294d19a1e4d6"),
+    name: 'Ajith',
+    course: 'full stack',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 22,
+      dob: '06-12-2001',
+      father_name: 'kanthasamy',
+      mobile_number: 9787674345,
+      email_id: 'ajith123@gmail.com'
+    },
+    address: {
+      street: 'selam',
+      city: 'selam',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7eac873d294d19a1e4d7"),
+    name: 'sathish',
+    course: 'developer',
+    m1: 60,
+    m2: 50,
+    m3: 85,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 23,
+      dob: '06-06-2003',
+      father_name: 'palanisamy',
+      mobile_number: 6787453345,
+      email_id: 'sathish@gmail.com'
+    },
+    address: {
+      street: 'Melathaniya',
+      city: 'pudukkottai',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7ede873d294d19a1e4d8"),
+    name: 'edward',
+    course: 'B.E CSE.',
+    m1: 90,
+    m2: 65,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 24,
+      dob: '06-06-2003',
+      father_name: 'jacob',
+      mobile_number: 6786574345,
+      email_id: 'edward@gmail.com'
+    },
+    address: {
+      street: 'lumina',
+      city: 'miami',
+      sate: 'miami',
+      country: 'america'
+    }
+  },
+  {
+    _id: ObjectId("653a7f2f873d294d19a1e4d9"),
+    name: 'jacob',
+    course: 'BCA',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 22,
+      dob: '08-08-2001',
+      father_name: 'edwin',
+      mobile_number: 6787674345,
+      email_id: 'jacob06@gmail.com'
+    },
+    address: {
+      street: 'calin',
+      city: 'california',
+      sate: 'california',
+      country: 'america'
+    }
+  },
+  {
+    _id: ObjectId("653a7f5d873d294d19a1e4da"),
+    name: 'ansari',
+    course: 'BCA',
+    m1: 90,
+    m2: 98,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 21,
+      dob: '05-09-2003',
+      father_name: 'mohmedali',
+      mobile_number: 6784674645,
+      email_id: 'ansari@gmail.com'
+    },
+    address: {
+      street: 'Melathaniya',
+      city: 'pudukkottai',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7f8b873d294d19a1e4db"),
+    name: 'kevin',
+    course: 'B.E CSE.',
+    m1: 90,
+    m2: 67,
+    m3: 89,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 21,
+      dob: '09-12-2001',
+      father_name: 'samy',
+      mobile_number: 9787604345,
+      email_id: 'kevin123@gmail.com'
+    },
+    address: {
+      street: 'coimbatore',
+      city: 'coimbatore',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  },
+  {
+    _id: ObjectId("653a7fbd873d294d19a1e4dc"),
+    name: 'sathishkumar',
+    course: 'developer',
+    m1: 60,
+    m2: 50,
+    m3: 85,
+    subject: [ 'html', 'css', 'mongodb' ],
+    personl: {
+      age: 23,
+      dob: '06-06-2003',
+      father_name: 'palanisamy',
+      mobile_number: 6707453345,
+      email_id: 'sathish@gmail.com'
+    },
+    address: {
+      street: 'Melathaniya',
+      city: 'pudukkottai',
+      sate: 'tamilnadu',
+      country: 'india'
+    }
+  }
+]

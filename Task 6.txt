@@ -1,0 +1,360 @@
+upsert> db.createCollection("address ")
+{ ok: 1 }
+
+
+upsert> db.address.insertOne({_id:1,name:'ram',address:[{houseno:1,loc:'chennai'},{houseno:2,loc:'covai'},{houseno:3,loc:'salem'}]})
+{ acknowledged: true, insertedId: 1 }
+...
+... {_id:3,name:'karthik',address:[{houseno:1,loc:'chennai'},{houseno:2,loc:'Namakkal'},{houseno:3,loc:'Ooty'}]}])
+{ acknowledged: true, insertedIds: { '0': 2, '1': 3 } }
+upsert> db.address.find().pretty()
+[
+  {
+    _id: 1,
+    name: 'ram',
+    address: [
+      { houseno: 1, loc: 'chennai' },
+      { houseno: 2, loc: 'covai' },
+      { houseno: 3, loc: 'salem' }
+    ]
+  },
+  {
+    _id: 2,
+    name: 'arvind',
+    address: [
+      { houseno: 1, loc: 'covai' },
+      { houseno: 2, loc: 'bangalore' },
+      { houseno: 3, loc: 'salem' }
+    ]
+  },
+  {
+    _id: 3,
+    name: 'karthik',
+    address: [
+      { houseno: 1, loc: 'chennai' },
+      { houseno: 2, loc: 'Namakkal' },
+      { houseno: 3, loc: 'Ooty' }
+    ]
+  }
+]
+
+upsert> db.address.updateMany({name:'arvind',name:'karthik'},{$push:{address:[{house:4,loc:'covai'},{house:5,loc:'mumbai'}]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+upsert> db.address.find().pretty()
+[
+  {
+    _id: 1,
+    name: 'ram',
+    address: [
+      { houseno: 1, loc: 'chennai' },
+      { houseno: 2, loc: 'covai' },
+      { houseno: 3, loc: 'salem' }
+    ]
+  },
+  {
+    _id: 2,
+    name: 'arvind',
+    address: [
+      { houseno: 1, loc: 'covai' },
+      { houseno: 2, loc: 'bangalore' },
+      { houseno: 3, loc: 'salem' }
+    ]
+  },
+  {
+    _id: 3,
+    name: 'karthik',
+    address: [
+      { houseno: 1, loc: 'chennai' },
+      { houseno: 2, loc: 'Namakkal' },
+      { houseno: 3, loc: 'Ooty' },
+      [ { house: 4, loc: 'covai' }, { house: 5, loc: 'mumbai' } ]
+    ]
+  }
+]
+
+upsert> db.address.updateOne({name:'arvind'},{$push:{address:[{house:4,loc:'covai'},{house:5,loc:'mumbai'}]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+upsert> db.address.find().pretty()
+[
+  {
+    _id: 1,
+    name: 'ram',
+    address: [
+      { houseno: 1, loc: 'chennai' },
+      { houseno: 2, loc: 'covai' },
+      { houseno: 3, loc: 'salem' }
+    ]
+  },
+  {
+    _id: 2,
+    name: 'arvind',
+    address: [
+      { houseno: 1, loc: 'covai' },
+      { houseno: 2, loc: 'bangalore' },
+      { houseno: 3, loc: 'salem' },
+      [ { house: 4, loc: 'covai' }, { house: 5, loc: 'mumbai' } ]
+    ]
+  },
+  {
+    _id: 3,
+    name: 'karthik',
+    address: [
+      { houseno: 1, loc: 'chennai' },
+      { houseno: 2, loc: 'Namakkal' },
+      { houseno: 3, loc: 'Ooty' },
+      [ { house: 4, loc: 'covai' }, { house: 5, loc: 'mumbai' } ],
+      [ { house: 4, loc: 'covai' }, { house: 5, loc: 'mumbai' } ]
+    ]
+  }
+]
+upsert> db.address.updateOne({name:'arvind'},{$push:{address:[{house:4,loc:'covai'},{house:5,loc:'mumbai'}]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+upsert> db.address.find().pretty()
+[
+  {
+    _id: 1,
+    name: 'ram',
+    address: [
+      { houseno: 1, loc: 'chennai' },
+      { houseno: 2, loc: 'covai' },
+      { houseno: 3, loc: 'salem' }
+    ]
+  },
+  {
+    _id: 2,
+    name: 'arvind',
+    address: [
+      { houseno: 1, loc: 'covai' },
+      { houseno: 2, loc: 'bangalore' },
+      { houseno: 3, loc: 'salem' },
+      [ { house: 4, loc: 'covai' }, { house: 5, loc: 'mumbai' } ],
+      [ { house: 4, loc: 'covai' }, { house: 5, loc: 'mumbai' } ]
+    ]
+  },
+  {
+    _id: 3,
+    name: 'karthik',
+    address: [
+      { houseno: 1, loc: 'chennai' },
+      { houseno: 2, loc: 'Namakkal' },
+      { houseno: 3, loc: 'Ooty' },
+      [ { house: 4, loc: 'covai' }, { house: 5, loc: 'mumbai' } ],
+      [ { house: 4, loc: 'covai' }, { house: 5, loc: 'mumbai' } ]
+    ]
+  }
+]
+upsert> db.address.updateOne({name:'arvind'}, {$pop:{ address:-1}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+upsert> db.address.find().pretty()
+[
+  {
+    _id: 1,
+    name: 'ram',
+    address: [
+      { houseno: 1, loc: 'chennai' },
+      { houseno: 2, loc: 'covai' },
+      { houseno: 3, loc: 'salem' }
+    ]
+  },
+  {
+    _id: 2,
+    name: 'arvind',
+    address: [
+      { houseno: 2, loc: 'bangalore' },
+      { houseno: 3, loc: 'salem' },
+      [ { house: 4, loc: 'covai' }, { house: 5, loc: 'mumbai' } ]
+    ]
+  },
+  {
+    _id: 3,
+    name: 'karthik',
+    address: [
+      { houseno: 1, loc: 'chennai' },
+      { houseno: 2, loc: 'Namakkal' },
+      { houseno: 3, loc: 'Ooty' },
+      [ { house: 4, loc: 'covai' }, { house: 5, loc: 'mumbai' } ],
+      [ { house: 4, loc: 'covai' }, { house: 5, loc: 'mumbai' } ]
+    ]
+  }
+]
+
+upsert> db.address.updateMany({name:'karthik'}, {$pop:{address:1}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+upsert> db.address.find().pretty()
+[
+  {
+    _id: 1,
+    name: 'ram',
+    address: [
+      { houseno: 1, loc: 'chennai' },
+      { houseno: 2, loc: 'covai' },
+      { houseno: 3, loc: 'salem' }
+    ]
+  },
+  {
+    _id: 2,
+    name: 'arvind',
+    address: [
+      { houseno: 2, loc: 'bangalore' },
+      { houseno: 3, loc: 'salem' },
+      [ { house: 4, loc: 'covai' }, { house: 5, loc: 'mumbai' } ]
+    ]
+  },
+  {
+    _id: 3,
+    name: 'karthik',
+    address: [ { houseno: 1, loc: 'chennai' }, { houseno: 2, loc: 'Namakkal' } ]
+  }
+]
+
+upsert> db.address.updateOne({name:'karthik'},{$pull:{address:{ houseno: 2, loc: 'Namakkal' }}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+upsert> db.address.find().pretty()
+[
+  {
+    _id: 1,
+    name: 'ram',
+    address: [
+      { houseno: 1, loc: 'chennai' },
+      { houseno: 2, loc: 'covai' },
+      { houseno: 3, loc: 'salem' }
+    ]
+  },
+  {
+    _id: 2,
+    name: 'arvind',
+    address: [
+      { houseno: 2, loc: 'bangalore' },
+      { houseno: 3, loc: 'salem' },
+      [ { house: 4, loc: 'covai' }, { house: 5, loc: 'mumbai' } ]
+    ]
+  },
+  {
+    _id: 3,
+    name: 'karthik',
+    address: [ { houseno: 1, loc: 'chennai' } ]
+  }
+]
+
+upsert> db.address.updateMany({},{$set:{discount:"Aadi sales"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+upsert> db.address.find().pretty()
+[
+  {
+    _id: 1,
+    name: 'ram',
+    address: [
+      { houseno: 1, loc: 'chennai' },
+      { houseno: 2, loc: 'covai' },
+      { houseno: 3, loc: 'salem' }
+    ],
+    discount: 'Aadi sales'
+  },
+  {
+    _id: 2,
+    name: 'arvind',
+    address: [
+      { houseno: 2, loc: 'bangalore' },
+      { houseno: 3, loc: 'salem' },
+      [ { house: 4, loc: 'covai' }, { house: 5, loc: 'mumbai' } ]
+    ],
+    discount: 'Aadi sales'
+  },
+  {
+    _id: 3,
+    name: 'karthik',
+    address: [ { houseno: 1, loc: 'chennai' } ],
+    discount: 'Aadi sales'
+  }
+]
+
+upsert> db.address.remove({name:'ram'})
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+{ acknowledged: true, deletedCount: 1 }
+upsert> db.address.find().pretty()
+[
+  {
+    _id: 2,
+    name: 'arvind',
+    address: [
+      { houseno: 2, loc: 'bangalore' },
+      { houseno: 3, loc: 'salem' },
+      [ { house: 4, loc: 'covai' }, { house: 5, loc: 'mumbai' } ]
+    ],
+    discount: 'Aadi sales'
+  },
+  {
+    _id: 3,
+    name: 'karthik',
+    address: [ { houseno: 1, loc: 'chennai' } ],
+    discount: 'Aadi sales'
+  }
+]
+
+upsert> show collections
+address
+address
+products
+students
+upsert> db.address.drop()
+true
+upsert> show collections
+address
+products
+students
+
+upsert> db.Dropdatabase
+upsert.Dropdatabase
+
+upsert> db.dropDatabase();
+{ ok: 1, dropped: 'upsert' }
+upsert> show databases
+admin                    40.00 KiB
+config                  108.00 KiB
+e-commerce_application   80.00 KiB
+local                    72.00 KiB
+mystore                  72.00 KiB
+studentdetails          184.00 KiB
+test                    192.00 KiB
